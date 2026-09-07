@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ios_bg"
+    android:orientation="vertical">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/btnBatal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text="Batal"
+            android:textColor="@color/ios_accent"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Ubah Jadwal"
+            android:textColor="@color/ios_text_primary"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnSimpan"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="Perbarui"
+            android:textColor="@color/ios_accent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
+
+            <!-- Time Picker -->
+            <TimePicker
+                android:id="@+id/tpWaktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:timePickerMode="spinner"
+                android:theme="@style/Theme.Jadwalin.TimePicker" />
+
+            <!-- Options Group -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Ulangi Row -->
+                    <LinearLayout
+                        android:id="@+id/rowUlangi"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Ulangi"
+                            android:textColor="@color/ios_text_primary"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/tvUlangiLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jangan Pernah"
+                            android:textColor="@color/ios_text_secondary"
+                            android:textSize="17sp"
+                            android:layout_marginEnd="4dp"/>
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="@color/ios_text_secondary" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/ios_divider" />
+
+                    <!-- Tanggal Row -->
+                    <LinearLayout
+                        android:id="@+id/rowTanggal"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Tanggal"
+                            android:textColor="@color/ios_text_primary"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/tvTanggalLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hari Ini"
+                            android:textColor="@color/ios_accent"
+                            android:textSize="17sp"
+                            android:layout_marginEnd="4dp"/>
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="@color/ios_text_secondary" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/dividerTanggal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@color/ios_divider"
+                        android:visibility="gone" />
+
+                    <!-- Label Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="Label"
+                            android:textColor="@color/ios_text_primary"
+                            android:textSize="17sp" />
+
+                        <EditText
+                            android:id="@+id/etJudul"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:gravity="end|center_vertical"
+                            android:hint="Alarm"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:textColor="@color/ios_text_primary"
+                            android:textColorHint="@color/ios_text_secondary"
+                            android:textSize="17sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/ios_divider" />
+
+                    <!-- Kategori Row -->
+                    <LinearLayout
+                        android:id="@+id/rowKategori"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Kategori"
+                            android:textColor="@color/ios_text_primary"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/tvKategoriLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kuliah"
+                            android:textColor="@color/ios_text_secondary"
+                            android:textSize="17sp"
+                            android:layout_marginEnd="4dp"/>
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="@color/ios_text_secondary" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/ios_divider" />
+
+                    <!-- Tunda Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Tunda"
+                            android:textColor="@color/ios_text_primary"
+                            android:textSize="17sp" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/swTunda"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/white"
+                            app:trackTint="@color/ios_accent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

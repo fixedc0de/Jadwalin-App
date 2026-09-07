@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Jadwalin</string>
+    <string name="tambah_jadwal">Tambah Jadwal</string>
+    <string name="ubah_jadwal">Ubah Jadwal</string>
+    <string name="batalkan">Batalkan</string>
+    <string name="simpan">Simpan</string>
+    <string name="perbarui">Perbarui</string>
+</resources>

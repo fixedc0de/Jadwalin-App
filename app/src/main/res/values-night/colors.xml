@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- iOS Styled Colors (Dark Mode) -->
+    <color name="ios_bg">#000000</color>
+    <color name="ios_group_bg">#1C1C1E</color>
+    <color name="ios_accent">#FF9F0A</color>
+    <color name="ios_text_primary">#FFFFFF</color>
+    <color name="ios_text_secondary">#8E8E93</color>
+    <color name="ios_divider">#38383A</color>
+
+    <!-- Overwrite specific categories for dark mode if needed -->
+    <color name="primary">#FF9F0A</color>
+</resources>

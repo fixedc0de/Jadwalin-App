@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- === PALET WARNA DASAR === -->
+    <color name="primary">#007AFF</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="secondary">#34C759</color>
+    <color name="tertiary">#FF9500</color>
+
+    <!-- Warna Kategori -->
+    <color name="kuliah">#5856D6</color>
+    <color name="sekolah">#FF9500</color>
+    <color name="kerja">#34C759</color>
+    <color name="lainnya">#8E8E93</color>
+
+    <!-- iOS Styled Colors (Light Mode Default) -->
+    <color name="ios_bg">#F2F2F7</color>
+    <color name="ios_group_bg">#FFFFFF</color>
+    <color name="ios_accent">#007AFF</color>
+    <color name="ios_text_primary">#000000</color>
+    <color name="ios_text_secondary">#8E8E93</color>
+    <color name="ios_divider">#C6C6C8</color>
+
+    <!-- Fallback -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

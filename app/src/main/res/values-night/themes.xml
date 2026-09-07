@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Jadwalin" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/ios_accent</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+        <!-- Background & Surface colors -->
+        <item name="android:colorBackground">@color/ios_bg</item>
+        <item name="colorSurface">@color/ios_group_bg</item>
+        <item name="colorOnSurface">@color/ios_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/ios_text_secondary</item>
+        <item name="colorOutlineVariant">@color/ios_divider</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/ios_bg</item>
+        <!-- windowLightStatusBar=false means light icons (for dark background) -->
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Navigation bar -->
+        <item name="android:navigationBarColor">@color/ios_bg</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+    </style>
+</resources>
