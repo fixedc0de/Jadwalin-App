@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Chip Style -->
+    <style name="Widget.Jadwalin.Chip" parent="Widget.Material3.Chip.Assist">
+        <item name="shapeAppearance">@style/ShapeAppearance.Jadwalin.Chip</item>
+        <item name="android:textAppearance">@style/TextAppearance.Jadwalin.Chip</item>
+    </style>
+
+    <style name="ShapeAppearance.Jadwalin.Chip" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="TextAppearance.Jadwalin.Chip" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Kuliah Chip -->
+    <style name="Widget.Jadwalin.Chip.Kuliah">
+        <item name="chipBackgroundColor">@color/cat_kuliah_bg</item>
+        <item name="android:textColor">@color/cat_kuliah_text</item>
+        <item name="chipStrokeWidth">0dp</item>
+    </style>
+
+    <!-- Kerja Chip -->
+    <style name="Widget.Jadwalin.Chip.Kerja">
+        <item name="chipBackgroundColor">@color/cat_kerja_bg</item>
+        <item name="android:textColor">@color/cat_kerja_text</item>
+        <item name="chipStrokeWidth">0dp</item>
+    </style>
+
+    <!-- Pribadi Chip -->
+    <style name="Widget.Jadwalin.Chip.Pribadi">
+        <item name="chipBackgroundColor">@color/cat_pribadi_bg</item>
+        <item name="android:textColor">@color/cat_pribadi_text</item>
+        <item name="chipStrokeWidth">0dp</item>
+    </style>
+</resources>

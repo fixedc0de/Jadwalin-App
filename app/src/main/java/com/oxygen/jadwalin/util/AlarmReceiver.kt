@@ -5,6 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
+import com.oxygen.jadwalin.data.local.AppDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(ctx: Context, intent: Intent) {
@@ -31,12 +36,58 @@ class AlarmReceiver : BroadcastReceiver() {
             ctx.startService(serviceIntent)
         }
 
-        // Jika rutin, jadwalkan minggu depan
+        // Jika rutin, jadwalkan minggu depan dengan ISO yang diperbarui
         if (isRecurring && iso.isNotEmpty()) {
             try {
-                AlarmScheduler.scheduleAlarm(ctx, id, judul, iso, menitSebelum, true)
+                // Parsing ISO untuk menambah 1 minggu secara eksplisit
+                val isoFormatter = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.US)
+                val date = isoFormatter.parse(iso)
+                if (date != null) {
+                    val cal = java.util.Calendar.getInstance().apply { time = date }
+                    cal.add(java.util.Calendar.WEEK_OF_YEAR, 1)
+                    val nextIso = isoFormatter.format(cal.time)
+                    
+                    AlarmScheduler.scheduleAlarm(ctx, id, judul, nextIso, menitSebelum, true)
+                    Log.d("ALARM_DEBUG", "Alarm rutin '$judul' dijadwalkan ulang ke: $nextIso")
+
+                    // Update database lokal agar waktu_mulai selalu tersinkron
+                    val pendingResult = goAsync()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val dao = AppDatabase.getDatabase(ctx).jadwalDao()
+                            val list = dao.getAllJadwal().first()
+                            val target = list.find { it.id == id }
+                            if (target != null) {
+                                dao.updateJadwal(target.copy(waktu_mulai = nextIso))
+                            }
+                        } catch (e: Exception) {
+                            Log.e("ALARM_DEBUG", "Gagal memperbarui DB lokal untuk jadwal rutin: ${e.message}")
+                        } finally {
+                            pendingResult.finish()
+                        }
+                    }
+                }
             } catch (e: Exception) {
                 Log.e("ALARM_DEBUG", "Gagal menjadwalkan ulang alarm rutin: ${e.message}")
+            }
+        } else if (!isRecurring) {
+            // Untuk jadwal sekali (non-recurring), saat alarm dipicu/berbunyi,
+            // ubah status is_active menjadi false di database lokal
+            val pendingResult = goAsync()
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val dao = AppDatabase.getDatabase(ctx).jadwalDao()
+                    val list = dao.getAllJadwal().first()
+                    val target = list.find { it.id == id }
+                    if (target != null && target.is_active) {
+                        dao.updateJadwal(target.copy(is_active = false))
+                        Log.d("ALARM_DEBUG", "Jadwal sekali '$judul' telah berbunyi, status otomatis diubah menjadi Nonaktif (is_active = false).")
+                    }
+                } catch (e: Exception) {
+                    Log.e("ALARM_DEBUG", "Gagal memperbarui status nonaktif jadwal sekali: ${e.message}")
+                } finally {
+                    pendingResult.finish()
+                }
             }
         }
     }

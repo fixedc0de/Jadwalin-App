@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_bg"
+    android:background="@color/surface_background"
     android:orientation="vertical">
 
     <!-- Top Bar -->
@@ -19,7 +19,7 @@
             android:layout_alignParentStart="true"
             android:gravity="center"
             android:text="Batalkan"
-            android:textColor="@color/ios_accent"
+            android:textColor="@color/brand_primary"
             android:textSize="17sp" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="Tambah Jadwal"
-            android:textColor="@color/ios_text_primary"
+            android:textColor="@color/text_primary"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
             android:layout_alignParentEnd="true"
             android:gravity="center"
             android:text="Simpan"
-            android:textColor="@color/ios_accent"
+            android:textColor="@color/brand_primary"
             android:textSize="17sp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -69,9 +69,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/ios_group_bg"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
+                app:cardBackgroundColor="@color/surface_card"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Ulangi"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <TextView
@@ -101,7 +101,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jangan Pernah"
-                            android:textColor="@color/ios_text_secondary"
+                            android:textColor="@color/text_secondary"
                             android:textSize="17sp"
                             android:layout_marginEnd="4dp"/>
 
@@ -109,10 +109,10 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/ios_divider" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
 
                     <!-- Tanggal Row (Only for 'Lainnya') -->
                     <LinearLayout
@@ -124,14 +124,14 @@
                         android:focusable="true"
                         android:gravity="center_vertical"
                         android:paddingHorizontal="16dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Tanggal"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <TextView
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Hari Ini"
-                            android:textColor="@color/ios_accent"
+                            android:textColor="@color/brand_primary"
                             android:textSize="17sp"
                             android:layout_marginEnd="4dp"/>
 
@@ -147,7 +147,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
 
                     <View
@@ -155,8 +155,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginStart="16dp"
-                        android:background="@color/ios_divider"
-                        android:visibility="gone" />
+                        android:background="@color/divider"
+                        android:visibility="visible" />
 
                     <!-- Label / Judul Row -->
                     <LinearLayout
@@ -169,7 +169,7 @@
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:text="Label"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <EditText
@@ -181,12 +181,12 @@
                             android:hint="Alarm"
                             android:imeOptions="actionDone"
                             android:inputType="text"
-                            android:textColor="@color/ios_text_primary"
-                            android:textColorHint="@color/ios_text_secondary"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_secondary"
                             android:textSize="17sp" />
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/ios_divider" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
 
                     <!-- Kategori Row (Mapping to 'Bunyi' style) -->
                     <LinearLayout
@@ -203,7 +203,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Kategori"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <TextView
@@ -211,7 +211,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Kuliah"
-                            android:textColor="@color/ios_text_secondary"
+                            android:textColor="@color/text_secondary"
                             android:textSize="17sp"
                             android:layout_marginEnd="4dp"/>
 
@@ -219,10 +219,10 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/ios_divider" />
+                    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="16dp" android:background="@color/divider" />
 
                     <!-- Tunda Row -->
                     <LinearLayout
@@ -236,7 +236,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Tunda"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -245,7 +245,7 @@
                             android:layout_height="wrap_content"
                             android:checked="true"
                             app:thumbTint="@color/white"
-                            app:trackTint="@color/ios_accent" />
+                            app:trackTint="@color/brand_primary" />
                     </LinearLayout>
 
                 </LinearLayout>

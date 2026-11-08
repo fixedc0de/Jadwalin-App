@@ -11,6 +11,7 @@ data class JadwalEntity(
     val waktu_mulai: String, // Format ISO: yyyy-MM-dd'T'HH:mm:ss
     val kategori: String,
     val lokasi: String?,
+    val is_active: Boolean = true,
     val isRecurring: Boolean = false,
     val hariDalamMinggu: Int = -1,
     val menitSebelumnya: Int = 30

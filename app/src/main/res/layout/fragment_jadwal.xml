@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_bg"
+    android:background="@color/surface_background"
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
@@ -20,7 +20,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:text="Daftar Jadwal"
-            android:textColor="@color/ios_text_primary"
+            android:textColor="@color/text_primary"
             android:textSize="34sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_filter_list"
-            app:tint="@color/ios_accent"
+            app:tint="@color/brand_primary"
             android:padding="10dp"
             android:scaleType="centerInside" />
     </RelativeLayout>
@@ -48,9 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@color/ios_group_bg"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp">
+            app:cardBackgroundColor="@color/surface_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@android:drawable/ic_menu_search"
-                    app:tint="@color/ios_text_secondary" />
+                    app:tint="@color/text_secondary" />
 
                 <EditText
                     android:id="@+id/etSearch"
@@ -71,8 +71,8 @@
                     android:background="@android:color/transparent"
                     android:hint="Cari jadwal..."
                     android:paddingStart="8dp"
-                    android:textColor="@color/ios_text_primary"
-                    android:textColorHint="@color/ios_text_secondary"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
                     android:textSize="15sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Tidak ada jadwal ditemukan"
-            android:textColor="@color/ios_text_secondary"
+            android:textColor="@color/text_secondary"
             android:textSize="17sp"
             android:visibility="gone" />
     </FrameLayout>

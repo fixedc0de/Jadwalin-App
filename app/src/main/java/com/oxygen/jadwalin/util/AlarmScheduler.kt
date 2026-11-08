@@ -35,9 +35,9 @@ object AlarmScheduler {
             } else {
                 if (originalEventTime > now) {
                     // Waktu pengingat (Reminder) sudah lewat, tapi event belum mulai.
-                    // Bunyikan 1 detik lagi sebagai pemberitahuan mendesak.
-                    cal.timeInMillis = now + 1000
-                    Log.d(TAG, "Waktu pengingat sudah lewat, disetel ulang ke: ${cal.time}")
+                    // Setel alarm tepat pada waktu acara dimulai agar tidak mengejutkan pengguna seketika.
+                    cal.timeInMillis = originalEventTime
+                    Log.d(TAG, "Waktu pengingat sudah lewat, disetel langsung pada waktu acara: ${cal.time}")
                 } else {
                     // Event aslinya sudah lewat dan tidak berulang.
                     Log.w(TAG, "Jadwal '$judul' sudah lewat sepenuhnya, tidak menjadwalkan alarm.")
@@ -62,34 +62,41 @@ object AlarmScheduler {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        // 3. Penjadwalan dengan penanganan izin yang lebih kuat
+        // 3. Penjadwalan dengan penanganan izin yang lebih kuat dan bebas SecurityException
         try {
-            val canScheduleExact = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                // canScheduleExactAlarms() mengembalikan true jika memiliki SCHEDULE_EXACT_ALARM atau USE_EXACT_ALARM
-                alarmManager.canScheduleExactAlarms()
-            } else {
-                true
+            val canScheduleExact = when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> alarmManager.canScheduleExactAlarms()
+                else -> true
             }
 
             if (canScheduleExact) {
-                // Gunakan setAlarmClock untuk presisi maksimal (terlihat di sistem sebagai alarm aktif)
-                val alarmClockInfo = AlarmManager.AlarmClockInfo(cal.timeInMillis, pendingIntent)
-                alarmManager.setAlarmClock(alarmClockInfo, pendingIntent)
-                Log.d(TAG, "Alarm dijadwalkan tepat waktu menggunakan setAlarmClock")
+                try {
+                    // Gunakan setAlarmClock untuk presisi maksimal (terlihat di sistem sebagai alarm aktif)
+                    val alarmClockInfo = AlarmManager.AlarmClockInfo(cal.timeInMillis, pendingIntent)
+                    alarmManager.setAlarmClock(alarmClockInfo, pendingIntent)
+                    Log.d(TAG, "Alarm dijadwalkan tepat waktu menggunakan setAlarmClock")
+                } catch (se: SecurityException) {
+                    Log.e(TAG, "SecurityException saat setAlarmClock: ${se.message}. Mencoba fallback setAndAllowWhileIdle.")
+                    try {
+                        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
+                    } catch (se2: SecurityException) {
+                        Log.w(TAG, "SecurityException saat setAndAllowWhileIdle: ${se2.message}, fallback ke inexact alarm set().")
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
+                    }
+                }
             } else {
-                // Fallback jika tidak ada izin: Gunakan alarm tidak tepat waktu tapi tetap berjalan di Doze mode
-                Log.w(TAG, "Izin EXACT_ALARM tidak ada. Menggunakan fallback setAndAllowWhileIdle.")
-                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
-            }
-        } catch (e: SecurityException) {
-            Log.e(TAG, "Gagal menjadwalkan alarm tepat waktu (SecurityException). Mencoba fallback.", e)
-            try {
-                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
-            } catch (ex: Exception) {
-                Log.e(TAG, "Fallback juga gagal: ${ex.message}")
+                // Fallback jika tidak ada izin: Gunakan alarm tidak tepat waktu (inexact) set() yang tidak memerlukan SCHEDULE_EXACT_ALARM
+                Log.w(TAG, "Izin EXACT_ALARM tidak aktif. Menggunakan fallback inexact alarm set().")
+                alarmManager.set(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
             }
         } catch (e: Exception) {
             Log.e(TAG, "Gagal menjadwalkan alarm: ${e.message}", e)
+            // Last resort fallback
+            try {
+                alarmManager.set(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
+            } catch (ex: Exception) {
+                Log.e(TAG, "Kritikal: Semua metode penjadwalan alarm gagal.", ex)
+            }
         }
     }
 

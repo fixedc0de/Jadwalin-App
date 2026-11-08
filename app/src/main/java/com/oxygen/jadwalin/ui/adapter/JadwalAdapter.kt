@@ -38,13 +38,18 @@ class JadwalAdapter : ListAdapter<JadwalEntity, JadwalAdapter.VH>(DiffCallback) 
         h.b.tvKategori.text = j.kategori.uppercase()
 
         val ctx = h.itemView.context
-        val colorRes = when (j.kategori.lowercase()) {
-            "kuliah" -> R.color.kuliah
-            "sekolah" -> R.color.sekolah
-            "kerja" -> R.color.kerja
-            else -> R.color.ios_accent
+        val (bgColor, textColor) = when (j.kategori.lowercase()) {
+            "kuliah" -> R.color.cat_kuliah_bg to R.color.cat_kuliah_text
+            "kerja", "proyek" -> R.color.cat_kerja_bg to R.color.cat_kerja_text
+            "pribadi" -> R.color.cat_pribadi_bg to R.color.cat_pribadi_text
+            else -> R.color.brand_primary to R.color.white
         }
-        h.b.viewIndicator.setBackgroundColor(ContextCompat.getColor(ctx, colorRes))
+
+        h.b.viewIndicator.setBackgroundColor(ContextCompat.getColor(ctx, textColor))
+        
+        // Update tvKategori to look like a chip
+        h.b.tvKategori.setTextColor(ContextCompat.getColor(ctx, textColor))
+        h.b.tvKategori.backgroundTintList = ContextCompat.getColorStateList(ctx, bgColor)
 
         // Kontrol visibilitas menu titik tiga
         h.b.btnMenu.visibility = if (showMenu) View.VISIBLE else View.GONE

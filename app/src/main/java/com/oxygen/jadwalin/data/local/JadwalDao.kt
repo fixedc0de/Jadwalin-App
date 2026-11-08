@@ -16,4 +16,7 @@ interface JadwalDao {
 
     @Delete
     suspend fun deleteJadwal(jadwal: JadwalEntity)
+
+    @Query("DELETE FROM jadwal")
+    suspend fun deleteAllJadwal()
 }

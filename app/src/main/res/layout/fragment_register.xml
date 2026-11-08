@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_bg"
+    android:background="@color/surface_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buat Akun"
-        android:textColor="@color/ios_text_primary"
+        android:textColor="@color/text_primary"
         android:textSize="32sp"
         android:textStyle="bold" />
 
@@ -21,7 +21,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"
         android:text="Bergabunglah dengan Jadwalin hari ini"
-        android:textColor="@color/ios_text_secondary"
+        android:textColor="@color/text_secondary"
         android:textSize="16sp" />
 
     <EditText
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/ios_accent"
+        android:backgroundTint="@color/brand_primary"
         android:text="Daftar"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Sudah punya akun? Masuk"
-        android:textColor="@color/ios_accent"
+        android:textColor="@color/brand_primary"
         android:textSize="16sp" />
 
 </LinearLayout>

@@ -4,27 +4,34 @@
     <!-- Base application theme. -->
     <style name="Theme.Jadwalin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/ios_accent</item>
+        <item name="colorPrimary">@color/brand_primary</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/brand_primary</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
 
         <!-- Background & Surface colors -->
-        <item name="android:colorBackground">@color/ios_bg</item>
-        <item name="colorSurface">@color/ios_group_bg</item>
-        <item name="colorOnSurface">@color/ios_text_primary</item>
-        <item name="colorOnSurfaceVariant">@color/ios_text_secondary</item>
-        <item name="colorOutlineVariant">@color/ios_divider</item>
+        <item name="android:colorBackground">@color/surface_background</item>
+        <item name="colorSurface">@color/surface_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOutlineVariant">@color/divider</item>
+
+        <!-- Typography -->
+        <item name="android:fontFamily">sans-serif</item>
 
         <!-- Status bar color -->
-        <item name="android:statusBarColor">@color/ios_bg</item>
-        <!-- windowLightStatusBar=true means dark icons (for light background) -->
+        <item name="android:statusBarColor">@color/surface_background</item>
         <item name="android:windowLightStatusBar">true</item>
 
         <!-- Navigation bar -->
-        <item name="android:navigationBarColor">@color/ios_bg</item>
+        <item name="android:navigationBarColor">@color/surface_background</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+
+        <!-- Component Styles -->
+        <item name="bottomSheetDialogTheme">@style/Theme.Jadwalin.BottomSheetDialog</item>
     </style>
 
-    <!-- Theme khusus untuk Full-Screen Alarm Activity (Selalu Gelap) -->
+    <!-- Theme khusus untuk Full-Screen Alarm Activity -->
     <style name="Theme.Jadwalin.Alarm" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/black</item>
         <item name="android:windowNoTitle">true</item>
@@ -34,10 +41,10 @@
     </style>
 
     <style name="Theme.Jadwalin.TimePicker" parent="Theme.Material3.DayNight">
-        <item name="android:textColorPrimary">@color/ios_text_primary</item>
-        <item name="android:editTextColor">@color/ios_text_primary</item>
-        <item name="android:numbersTextColor">@color/ios_text_primary</item>
-        <item name="android:textColorSecondary">@color/ios_text_secondary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:editTextColor">@color/text_primary</item>
+        <item name="android:numbersTextColor">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
     </style>
 
     <style name="Theme.Jadwalin.BottomSheetDialog" parent="Theme.Material3.DayNight.BottomSheetDialog">
@@ -47,16 +54,26 @@
     </style>
 
     <style name="Widget.Jadwalin.BottomSheet" parent="Widget.Material3.BottomSheet">
-        <item name="backgroundTint">@color/ios_bg</item>
+        <item name="backgroundTint">@color/surface_card</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Jadwalin.BottomSheet</item>
     </style>
 
     <style name="ShapeAppearance.Jadwalin.BottomSheet" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">16dp</item>
-        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <!-- Typography Styles -->
+    <style name="TextAppearance.Jadwalin.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Jadwalin.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_secondary</item>
     </style>
 
 </resources>

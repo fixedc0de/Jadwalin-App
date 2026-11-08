@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_bg"
+    android:background="@color/surface_background"
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
@@ -25,7 +25,7 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_chevron_right"
             android:rotation="180"
-            app:tint="@color/ios_accent"
+            app:tint="@color/brand_primary"
             android:contentDescription="Kembali" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="Kembali"
-            android:textColor="@color/ios_accent"
+            android:textColor="@color/brand_primary"
             android:textSize="17sp" />
     </LinearLayout>
 
@@ -43,7 +43,7 @@
         android:paddingHorizontal="16dp"
         android:paddingBottom="16dp"
         android:text="Tentang Aplikasi"
-        android:textColor="@color/ios_text_primary"
+        android:textColor="@color/text_primary"
         android:textSize="34sp"
         android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
 
@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Misi Kami"
-                        android:textColor="@color/ios_accent"
+                        android:textColor="@color/brand_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Jadwalin hadir bukan sekadar aplikasi pengingat biasa. Kami adalah partner manajemen waktu Anda yang dirancang untuk memastikan setiap detik berharga Anda tidak terbuang sia-sia."
-                        android:textColor="@color/ios_text_primary"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp"
                         android:lineSpacingExtra="4dp" />
 
@@ -92,13 +92,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginVertical="16dp"
-                        android:background="@color/ios_divider" />
+                        android:background="@color/divider" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fitur Unggulan"
-                        android:textColor="@color/ios_accent"
+                        android:textColor="@color/brand_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="• Presisi Maksimal: Menggunakan teknologi alarm terbaru untuk ketepatan waktu mutlak.\n• Desain Elegan: Antarmuka minimalis terinspirasi dari estetika iOS.\n• Penjadwalan Cerdas: Kelola rutinitas mingguan dengan sekali atur.\n• Notifikasi Handal: Alarm yang tetap berfungsi meski dalam mode hemat daya."
-                        android:textColor="@color/ios_text_secondary"
+                        android:textColor="@color/text_secondary"
                         android:textSize="15sp"
                         android:lineSpacingExtra="6dp" />
                 </LinearLayout>
@@ -120,13 +120,13 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:text="RIWAYAT VERSI"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
 
@@ -146,7 +146,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Versi 1.0.0 (Terbaru)"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
@@ -155,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Rilis perdana dengan sistem alarm inti, desain iOS, dan manajemen jadwal reaktif."
-                            android:textColor="@color/ios_text_secondary"
+                            android:textColor="@color/text_secondary"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -167,7 +167,7 @@
                 android:layout_marginTop="32dp"
                 android:gravity="center"
                 android:text="© 2026 Jadwalin Project. All Rights Reserved."
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
         </LinearLayout>

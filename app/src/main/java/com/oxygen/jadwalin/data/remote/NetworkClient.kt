@@ -18,17 +18,24 @@ object NetworkClient {
 
     private fun getAuthInterceptor(context: Context): Interceptor {
         return Interceptor { chain ->
+            val request = chain.request()
+            val path = request.url.encodedPath
+            
+            // JANGAN tambahkan token untuk login dan register
+            if (path.contains("auth/login") || path.contains("auth/register")) {
+                return@Interceptor chain.proceed(request)
+            }
+
             val prefs = AppPreferences(context)
             val token = runBlocking { prefs.tokenFlow.first() }
-            val requestBuilder = chain.request().newBuilder()
+            val requestBuilder = request.newBuilder()
             
             if (!token.isNullOrEmpty()) {
-                // Sangat penting: hapus tanda kutip dan trim
                 val cleanToken = token.replace("\"", "").trim()
                 requestBuilder.header("Authorization", "Bearer $cleanToken")
-                Log.d("NETWORK_DEBUG", "Header ditambahkan: Bearer ${cleanToken.take(10)}... (Panjang: ${cleanToken.length})")
+                Log.d("NETWORK_DEBUG", "Header ditambahkan ke $path")
             } else {
-                Log.w("NETWORK_DEBUG", "Token TIDAK ditemukan di DataStore")
+                Log.w("NETWORK_DEBUG", "Token TIDAK ditemukan untuk $path")
             }
             
             chain.proceed(requestBuilder.build())
@@ -40,7 +47,7 @@ object NetworkClient {
             val logging = HttpLoggingInterceptor { message ->
                 Log.d("OKHTTP_LOG", message)
             }.apply {
-                level = HttpLoggingInterceptor.Level.HEADERS
+                level = HttpLoggingInterceptor.Level.BODY
             }
 
             val client = OkHttpClient.Builder()

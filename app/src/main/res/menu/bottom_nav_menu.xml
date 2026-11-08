@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/berandaFragment" android:icon="@drawable/ic_home_24" android:title="Beranda"/>
-    <item android:id="@+id/jadwalFragment" android:icon="@drawable/ic_calendar_24" android:title="Jadwal"/>
-    <item android:id="@+id/settingsFragment" android:icon="@drawable/ic_settings_24" android:title="Settings"/>
+    <item
+        android:id="@+id/berandaFragment"
+        android:icon="@drawable/ic_home_24"
+        android:title="Beranda" />
+    <item
+        android:id="@+id/jadwalFragment"
+        android:icon="@drawable/ic_calendar_24"
+        android:title="Jadwal" />
+    <item
+        android:id="@+id/placeholder"
+        android:title=""
+        android:enabled="false" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_24"
+        android:title="Settings" />
+    <item
+        android:id="@+id/appInfoFragment"
+        android:icon="@drawable/ic_info_24"
+        android:title="Info" />
 </menu>

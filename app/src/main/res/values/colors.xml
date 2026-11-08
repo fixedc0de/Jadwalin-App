@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- === PALET WARNA DASAR === -->
-    <color name="primary">#007AFF</color>
-    <color name="on_primary">#FFFFFF</color>
-    <color name="secondary">#34C759</color>
-    <color name="tertiary">#FF9500</color>
+    <!-- === PRIMARY BRAND COLORS === -->
+    <color name="brand_primary">#2563EB</color>
+    <color name="brand_primary_dark">#1D4ED8</color>
+    <color name="brand_primary_gradient_start">#2563EB</color>
+    <color name="brand_primary_gradient_end">#1D4ED8</color>
 
-    <!-- Warna Kategori -->
-    <color name="kuliah">#5856D6</color>
-    <color name="sekolah">#FF9500</color>
-    <color name="kerja">#34C759</color>
-    <color name="lainnya">#8E8E93</color>
+    <!-- === SURFACE & BACKGROUND === -->
+    <color name="surface_background">#FAF8FF</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="surface_dock">#FFFFFF</color>
 
-    <!-- iOS Styled Colors (Light Mode Default) -->
-    <color name="ios_bg">#F2F2F7</color>
-    <color name="ios_group_bg">#FFFFFF</color>
-    <color name="ios_accent">#007AFF</color>
-    <color name="ios_text_primary">#000000</color>
-    <color name="ios_text_secondary">#8E8E93</color>
-    <color name="ios_divider">#C6C6C8</color>
+    <!-- === TYPOGRAPHY COLORS === -->
+    <color name="text_primary">#1E293B</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
 
-    <!-- Fallback -->
+    <!-- === CATEGORY COLORS (CHIPS) === -->
+    <!-- Kuliah -->
+    <color name="cat_kuliah_bg">#EEF2FF</color>
+    <color name="cat_kuliah_text">#4F46E5</color>
+
+    <!-- Kerja / Proyek -->
+    <color name="cat_kerja_bg">#FEF3C7</color>
+    <color name="cat_kerja_text">#D97706</color>
+
+    <!-- Pribadi -->
+    <color name="cat_pribadi_bg">#ECFDF5</color>
+    <color name="cat_pribadi_text">#059669</color>
+
+    <!-- UI State Colors -->
+    <color name="success">#10B981</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+    <color name="divider">#E2E8F0</color>
+
+    <!-- System Defaults -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Legacy colors for compatibility -->
+    <color name="secondary">#10B981</color>
+    <color name="tertiary">#F59E0B</color>
 </resources>

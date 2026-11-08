@@ -50,15 +50,26 @@ class AlarmActivity : AppCompatActivity() {
             finish()
         }
 
-        // 3. Tombol Snooze
+        // 3. Tombol Snooze dengan Pilihan (5, 7, 10 Menit)
         findViewById<Button>(R.id.btnSnooze).setOnClickListener {
-            val snoozeIntent = Intent(this, AlarmService::class.java).apply {
-                action = "SNOOZE_ALARM"
-                putExtra("ID", id)
-                putExtra("JUDUL", judul)
-            }
-            startService(snoozeIntent)
-            finish()
+            val options = arrayOf("5 Menit", "7 Menit", "10 Menit")
+            val minutesArray = intArrayOf(5, 7, 10)
+
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Pilih Waktu Tunda (Snooze)")
+                .setItems(options) { _, which ->
+                    val selectedMinutes = minutesArray[which]
+                    val snoozeIntent = Intent(this, AlarmService::class.java).apply {
+                        action = "SNOOZE_ALARM"
+                        putExtra("ID", id)
+                        putExtra("JUDUL", judul)
+                        putExtra("MINUTES", selectedMinutes)
+                    }
+                    startService(snoozeIntent)
+                    finish()
+                }
+                .setNegativeButton("Batal", null)
+                .show()
         }
     }
 }

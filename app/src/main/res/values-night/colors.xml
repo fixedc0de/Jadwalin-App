@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- iOS Styled Colors (Dark Mode) -->
-    <color name="ios_bg">#000000</color>
-    <color name="ios_group_bg">#1C1C1E</color>
-    <color name="ios_accent">#FF9F0A</color>
-    <color name="ios_text_primary">#FFFFFF</color>
-    <color name="ios_text_secondary">#8E8E93</color>
-    <color name="ios_divider">#38383A</color>
+    <!-- === PRIMARY BRAND COLORS (DARK) === -->
+    <color name="brand_primary">#3B82F6</color>
+    <color name="brand_primary_dark">#2563EB</color>
 
-    <!-- Overwrite specific categories for dark mode if needed -->
-    <color name="primary">#FF9F0A</color>
+    <!-- === SURFACE & BACKGROUND (DARK) === -->
+    <color name="surface_background">#0F172A</color>
+    <color name="surface_card">#1E293B</color>
+    <color name="surface_dock">#1E293B</color>
+
+    <!-- === TYPOGRAPHY COLORS (DARK) === -->
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_hint">#64748B</color>
+
+    <!-- UI State Colors (Dark) -->
+    <color name="divider">#334155</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

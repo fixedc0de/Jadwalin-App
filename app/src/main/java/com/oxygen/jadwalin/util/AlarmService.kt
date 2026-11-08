@@ -45,7 +45,8 @@ class AlarmService : Service() {
         } else if (action == "SNOOZE_ALARM") {
             val id = intent.getIntExtra("ID", 0)
             val judul = intent.getStringExtra("JUDUL") ?: "Jadwal"
-            snoozeAlarm(id, judul)
+            val minutes = intent.getIntExtra("MINUTES", 10)
+            snoozeAlarm(id, judul, minutes)
             stopSelf()
             return START_NOT_STICKY
         }
@@ -56,29 +57,33 @@ class AlarmService : Service() {
         val menitSebelum = intent?.getIntExtra("MENIT_SEBELUM", 0) ?: 0
         val isRecurring = intent?.getBooleanExtra("IS_RECURRING", false) ?: false
 
-        showNotification(id, judul, iso, menitSebelum, isRecurring)
+        CoroutineScope(Dispatchers.Main).launch {
+            val defaultSnooze = try { appPrefs.defaultSnoozeFlow.first() } catch (_: Exception) { 10 }
+            showNotification(id, judul, iso, menitSebelum, isRecurring, defaultSnooze)
+        }
         startAlarm()
 
         return START_STICKY
     }
 
-    private fun snoozeAlarm(id: Int, judul: String) {
+    private fun snoozeAlarm(id: Int, judul: String, minutes: Int) {
         val now = java.util.Calendar.getInstance()
-        // Format ISO for scheduleAlarm (add 10 minutes from now)
-        now.add(java.util.Calendar.MINUTE, 10)
+        now.add(java.util.Calendar.MINUTE, minutes)
         val snoozeIso = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.US).format(now.time)
+
+        val cleanJudul = judul.replace(Regex("""\s*\(Snooze.*?\)"""), "").trim()
 
         AlarmScheduler.scheduleAlarm(
             ctx = this,
             id = id,
-            judul = "$judul (Snooze)",
+            judul = "$cleanJudul (Snooze ${minutes}m)",
             iso = snoozeIso,
             menitSebelum = 0,
             isRecurring = false
         )
     }
 
-    private fun showNotification(id: Int, judul: String, iso: String, menitSebelum: Int, isRecurring: Boolean) {
+    private fun showNotification(id: Int, judul: String, iso: String, menitSebelum: Int, isRecurring: Boolean, defaultSnooze: Int = 10) {
         val channelId = "jadwalin_alarm_service_channel"
         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -96,15 +101,16 @@ class AlarmService : Service() {
 
         // Action Turn Off
         val stopIntent = Intent(this, AlarmService::class.java).apply { action = "STOP_ALARM" }
-        val stopPendingIntent = PendingIntent.getService(this, id, stopIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val stopPendingIntent = PendingIntent.getService(this, id * 10 + 1, stopIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         // Action Snooze
         val snoozeIntent = Intent(this, AlarmService::class.java).apply {
             action = "SNOOZE_ALARM"
             putExtra("ID", id)
             putExtra("JUDUL", judul)
+            putExtra("MINUTES", defaultSnooze)
         }
-        val snoozePendingIntent = PendingIntent.getService(this, id + 500, snoozeIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val snoozePendingIntent = PendingIntent.getService(this, id * 10 + 2, snoozeIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         val fullScreenIntent = Intent(this, AlarmActivity::class.java).apply {
             putExtra("JUDUL", judul)
@@ -115,7 +121,7 @@ class AlarmService : Service() {
             putExtra("IS_RECURRING", isRecurring)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val fullScreenPendingIntent = PendingIntent.getActivity(this, id, fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val fullScreenPendingIntent = PendingIntent.getActivity(this, id * 10 + 3, fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         val notification = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_notification)
@@ -126,7 +132,7 @@ class AlarmService : Service() {
             .setFullScreenIntent(fullScreenPendingIntent, true)
             .setOngoing(true)
             .addAction(R.drawable.ic_notification, "Matikan", stopPendingIntent)
-            .addAction(R.drawable.ic_notification, "Snooze (10m)", snoozePendingIntent)
+            .addAction(R.drawable.ic_notification, "Snooze (${defaultSnooze}m)", snoozePendingIntent)
             .build()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {

@@ -4,12 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oxygen.jadwalin.data.repository.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 sealed class AuthState {
-    object Idle : AuthState()
-    object Loading : AuthState()
+    data object Idle : AuthState()
+    data object Loading : AuthState()
     data class Success(val message: String) : AuthState()
     data class Error(val message: String) : AuthState()
 }
@@ -18,6 +20,12 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
 
     private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
     val authState: StateFlow<AuthState> = _authState
+
+    val userName: StateFlow<String> = repository.userName
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "User")
+
+    val userEmail: StateFlow<String> = repository.userEmail
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
 
     fun login(email: String, pass: String) {
         viewModelScope.launch {
@@ -40,6 +48,14 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
             } else {
                 _authState.value = AuthState.Error("Registrasi Gagal")
             }
+        }
+    }
+
+    fun logout(onComplete: () -> Unit = {}) {
+        viewModelScope.launch {
+            repository.logout()
+            _authState.value = AuthState.Idle
+            onComplete()
         }
     }
 

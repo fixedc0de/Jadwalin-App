@@ -34,4 +34,10 @@
     <fragment android:id="@+id/settingsFragment" android:name="com.oxygen.jadwalin.ui.fragments.SettingsFragment" android:label="Settings" />
     <fragment android:id="@+id/appInfoFragment" android:name="com.oxygen.jadwalin.ui.fragments.AppInfoFragment" android:label="App Info" />
     <fragment android:id="@+id/devInfoFragment" android:name="com.oxygen.jadwalin.ui.fragments.DevInfoFragment" android:label="Developer Info" />
+
+    <action
+        android:id="@+id/action_global_to_login"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/berandaFragment"
+        app:popUpToInclusive="true" />
 </navigation>

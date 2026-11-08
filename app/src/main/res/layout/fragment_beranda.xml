@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_bg"
+    android:background="@color/surface_background"
     android:fillViewport="true"
     android:fitsSystemWindows="true">
 
@@ -25,7 +25,7 @@
                 android:layout_width="186dp"
                 android:layout_height="51dp"
                 android:text="Ringkasan"
-                android:textColor="@color/ios_text_primary"
+                android:textColor="@color/text_primary"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Kelola waktumu dengan bijak"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
                 <LinearLayout
@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total"
-                        android:textColor="@color/ios_text_secondary"
+                        android:textColor="@color/text_secondary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                     <TextView
@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="0"
-                        android:textColor="@color/ios_accent"
+                        android:textColor="@color/brand_primary"
                         android:textSize="28sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
                 <LinearLayout
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hari Ini"
-                        android:textColor="@color/ios_text_secondary"
+                        android:textColor="@color/text_secondary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                     <TextView
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
                 <LinearLayout
@@ -130,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mendatang"
-                        android:textColor="@color/ios_text_secondary"
+                        android:textColor="@color/text_secondary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                     <TextView
@@ -160,7 +160,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="12dp"
                 android:text="JADWAL TERDEKAT"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -185,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Belum ada jadwal"
-                    android:textColor="@color/ios_text_secondary"
+                    android:textColor="@color/text_secondary"
                     android:textSize="17sp" />
             </LinearLayout>
         </LinearLayout>

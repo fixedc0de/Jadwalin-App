@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_bg"
+    android:background="@color/surface_background"
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
@@ -14,7 +14,7 @@
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:text="Pengaturan"
-        android:textColor="@color/ios_text_primary"
+        android:textColor="@color/text_primary"
         android:textSize="34sp"
         android:textStyle="bold" />
 
@@ -37,13 +37,13 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="TAMPILAN"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
 
@@ -63,7 +63,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Mode Gelap"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -71,7 +71,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:thumbTint="@color/white"
-                            app:trackTint="@color/ios_accent" />
+                            app:trackTint="@color/brand_primary" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -84,13 +84,13 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:text="PENGINGAT"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
 
@@ -114,7 +114,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Waktu Default"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <TextView
@@ -122,7 +122,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="30 menit"
-                            android:textColor="@color/ios_text_secondary"
+                            android:textColor="@color/text_secondary"
                             android:textSize="17sp"
                             android:layout_marginEnd="4dp"/>
 
@@ -130,13 +130,13 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/ios_divider" />
+                        android:background="@color/divider" />
 
                     <LinearLayout
                         android:id="@+id/rowAlarmSound"
@@ -152,7 +152,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Suara Alarm"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <TextView
@@ -160,7 +160,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Default"
-                            android:textColor="@color/ios_text_secondary"
+                            android:textColor="@color/text_secondary"
                             android:textSize="17sp"
                             android:layout_marginEnd="4dp"
                             android:ellipsize="end"
@@ -171,7 +171,7 @@
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -184,13 +184,13 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:text="TENTANG APLIKASI"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
 
@@ -214,20 +214,20 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Tentang Aplikasi"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <ImageView
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/ios_divider" />
+                        android:background="@color/divider" />
 
                     <LinearLayout
                         android:id="@+id/rowDevInfo"
@@ -243,14 +243,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Developer Info"
-                            android:textColor="@color/ios_text_primary"
+                            android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
                         <ImageView
                             android:layout_width="14dp"
                             android:layout_height="14dp"
                             android:src="@drawable/ic_chevron_right"
-                            app:tint="@color/ios_text_secondary" />
+                            app:tint="@color/text_secondary" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -258,7 +258,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/ios_group_bg"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
 
@@ -287,7 +287,7 @@
                 android:layout_marginTop="24dp"
                 android:gravity="center"
                 android:text="Versi 1.0.0 (Build 2026)"
-                android:textColor="@color/ios_text_secondary"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
         </LinearLayout>
